@@ -1,0 +1,12 @@
+pipeline {
+    agent { label 'ci-agent' } 
+    stages {
+        stage('deploy web-server'){
+            steps {
+                container('kubectl'){
+                   sh 'kubectl delete deployment nginx-deployment -n web'
+                }
+            }
+        }
+    }
+}
