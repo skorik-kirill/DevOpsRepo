@@ -6,7 +6,7 @@ pipeline {
                 container('kubectl'){
                    sh 'kubectl apply -f service-nginx.yaml'
                    sh 'kubectl apply -f web-server.yaml'
-                   sh 'kybectl get svc -n web'
+                   sh 'kubectl get svc -n web'
                 }
             }
         }
