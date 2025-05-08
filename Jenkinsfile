@@ -1,12 +1,13 @@
 pipeline {
     agent { label 'ci-agent' } 
     stages {
-        stage('Build') { 
+        stage('deploy web-server'){
             steps {
-                container('python'){
-                   sh 'python3 -V'
+                container('kubectl'){
+                   sh 'kubectl apply -f service-nginx.yaml'
+                   sh 'kubectl apply -f web-server.yaml'
                 }
-               }
             }
         }
     }
+}
