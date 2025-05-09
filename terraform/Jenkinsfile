@@ -22,6 +22,7 @@ pipeline {
                                  } 
                                  if (env.ACTION == 'destroy'){
                                      echo 'Destroy server.....'
+                                     sh 'terraform init'
                                      sh 'terraform destroy -auto-approve -lock=false'
                                  }
                              }
