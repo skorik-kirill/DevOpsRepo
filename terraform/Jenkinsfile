@@ -12,9 +12,16 @@ pipeline {
                        {
                            script {
                              dir('terraform'){
-                                 sh 'terraform init'
-                                 sh 'pwd && ls'
-                                 sh 'terraform plan'
+                                 //sh 'terraform init'
+                                 //sh 'pwd && ls'
+                                 //sh 'terraform plan'
+                                 if (env.ACTION == 'create'){
+                                     sh 'terraform init'
+                                     sh 'teraform plan'
+                                 } 
+                                 if (env.ACTION == 'destroy'){
+                                     echo 'Destroy server'
+                                 }
                              }
                            }
                        }
