@@ -1,0 +1,21 @@
+pipeline {
+    agent { label 'ci-agent' } 
+    stages {
+        stage('deploy web-server'){
+            steps {
+                container('terraform-aws-cli'){
+                   withCredentials([[
+                       $class: 'AmazonWebServicesCredentialsBinding',
+                       accessKeyVariable: 'AWS_ACCESS_KEY_ID',
+                       secretKeyVariable: 'AWS_SECRET_ACCESS_KEY',
+                       credentialsId: 'AWSCLICredentials']])
+                       {
+                           script {
+                               sh 'cd terraform && terraform init'
+                           }
+                       }
+                }
+            }
+        }
+    }
+}
