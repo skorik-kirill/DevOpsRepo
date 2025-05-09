@@ -11,8 +11,11 @@ pipeline {
                        credentialsId: 'AWSCLICredentials']])
                        {
                            script {
-                               sh 'cd terraform && terraform init'
-                               sh 'terraform plan'
+                             dir('terraform'){
+                                 sh 'terraform init'
+                                 sh 'pwd && ls'
+                                 sh 'terraform plan'
+                             }
                            }
                        }
                 }
