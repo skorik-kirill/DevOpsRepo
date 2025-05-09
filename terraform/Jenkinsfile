@@ -12,6 +12,7 @@ pipeline {
                        {
                            script {
                                sh 'cd terraform && terraform init'
+                               sh 'terraform plan'
                            }
                        }
                 }
