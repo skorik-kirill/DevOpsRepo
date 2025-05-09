@@ -17,7 +17,7 @@ pipeline {
                                  //sh 'terraform plan'
                                  if (env.ACTION == 'create'){
                                      sh 'terraform init'
-                                     sh 'teraform plan'
+                                     sh 'terraform plan'
                                  } 
                                  if (env.ACTION == 'destroy'){
                                      echo 'Destroy server'
