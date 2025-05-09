@@ -18,9 +18,11 @@ pipeline {
                                  if (env.ACTION == 'create'){
                                      sh 'terraform init'
                                      sh 'terraform plan'
+                                     sh 'terraform apply -auto-approve'
                                  } 
                                  if (env.ACTION == 'destroy'){
-                                     echo 'Destroy server'
+                                     echo 'Destroy server.....'
+                                     sh 'terraform destroy -auto-approve'
                                  }
                              }
                            }
