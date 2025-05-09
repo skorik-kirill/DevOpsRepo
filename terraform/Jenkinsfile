@@ -17,12 +17,12 @@ pipeline {
                                  //sh 'terraform plan'
                                  if (env.ACTION == 'create'){
                                      sh 'terraform init'
-                                     sh 'terraform plan'
-                                     sh 'terraform apply -auto-approve'
+                                     sh 'terraform plan -lock=false'
+                                     sh 'terraform apply -auto-approve -lock=false'
                                  } 
                                  if (env.ACTION == 'destroy'){
                                      echo 'Destroy server.....'
-                                     sh 'terraform destroy -auto-approve'
+                                     sh 'terraform destroy -auto-approve -lock=false'
                                  }
                              }
                            }
