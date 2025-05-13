@@ -4,8 +4,8 @@ pipeline {
         stage('deploy web-server'){
             steps {
                 container('kubectl'){
-                   sh 'kubectl delete deployment nginx-deployment -n web'
-                   sh 'kubectl delete svc service-nginx -n web'
+                   sh "kubectl delete deployment $deploymentName -n web"
+                   sh "kubectl delete svc $serviceName -n web"
                 }
             }
         }
