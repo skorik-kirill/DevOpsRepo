@@ -3,8 +3,11 @@ pipeline {
     stages {
         stage('delete web-server'){
             steps {
-                container('kubectl'){
-
+                container('docker'){
+                    dir('buildImagePipeline') {
+                        sh 'docker build -t hostname .'
+                        sh 'docker image ls'
+                    }
                 }
             }
         }
