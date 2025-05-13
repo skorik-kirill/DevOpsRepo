@@ -3,10 +3,9 @@ pipeline {
     stages {
         stage('delete web-server'){
             steps {
-                container('docker'){
+                container('kubectl'){
                     dir('buildImagePipeline') {
-                        sh 'docker build -t hostname .'
-                        sh 'docker image ls'
+                        sh 'kubectl apply -f pod.yaml'
                     }
                 }
             }

@@ -1,0 +1,8 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: hostname
+spec:
+  containers:
+  - name: hostname
+    image: devopsd075/hostname:latest
