@@ -4,7 +4,7 @@ pipeline {
         stage('scale web-server'){
             steps {
                 container('kubectl'){
-                   sh "kubectl scale --replicas=3=$podCount deployment/nginx-deployment -n web"
+                   sh "kubectl scale --replicas=$podCount deployment/nginx-deployment -n web"
                 }
             }
         }
