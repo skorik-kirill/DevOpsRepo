@@ -1,0 +1,12 @@
+pipeline {
+    agent { label 'ci-agent' } 
+    stages {
+        stage('scale web-server'){
+            steps {
+                container('kubectl'){
+                   sh 'kubectl scale --replicas=3 deployment/nginx-deployment'
+                }
+            }
+        }
+    }
+}
